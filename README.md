@@ -1,8 +1,4 @@
----
-title: PornHub Video Downloader | How to Download PornHub Videos for Offline Viewing
----
-
-# PornHub Video Downloader (Browser Extension)
+# PornHub Video Downloader
 
 A browser extension that adds a download button to PornHub (`pornhub.com`) video pages to easily download videos for convenient offline viewing.
 
@@ -161,6 +157,196 @@ This extension bridges that gap by providing a simple, privacy-focused way to do
 **Legal Notice**
 This tool is intended for personal use only. Users are responsible for ensuring their use complies with all applicable laws and the terms of service of the websites they visit. Always respect copyright and intellectual property rights.
 
+# PornHub Video Downloader
+
+A professional Chrome extension that enables seamless video downloads from PornHub, PornHubPremium, and Thumbzilla with advanced features including license activation, refresh-proof downloads, and real-time progress tracking.
+
+## 🚀 Key Features
+
+### Core Download Capabilities
+- **Multi-Platform Support**: Downloads from PornHub, PornHubPremium, and Thumbzilla
+- **Multiple Quality Options**: Supports 480p, 720p, 1080p, and 4K resolution when available
+- **Format Flexibility**: Handles both direct MP4 and HLS/M3U8 segmented video formats
+- **Refresh-Proof Downloads**: Downloads continue even if you navigate away or refresh the page
+- **Real-Time Progress**: Live progress tracking with percentage, file size, and download speed
+
+### Advanced Technical Features
+- **Offscreen Processing**: Uses Chrome's offscreen document API for robust download handling
+- **Flashvars Extraction**: Advanced video data extraction from page JavaScript variables
+- **Media Definition API**: Integrates with PornHub's `/video/get_media` endpoints
+- **HLS Pipeline**: Sophisticated HLS segment processing and concatenation
+- **Context Menu Integration**: Right-click download option on any supported video page
+
+### User Experience
+- **License Activation System**: Secure Gumroad-based license verification
+- **In-Page UI**: Integrated download button directly on the video player
+- **Download Manager**: Comprehensive progress tracking with cancel/retry options
+- **Smart Filename Handling**: Automatic filename sanitization and organization
+- **Organized Storage**: Downloads saved to dedicated `PornHub/` folder
+
+## 📋 Requirements
+
+- **Browser**: Chrome or Chromium-based browser (Manifest V3 compatible)
+- **License**: Valid license key required (available at [serp.ly/pornhub-video-downloader](https://serp.ly/pornhub-video-downloader))
+- **Internet Connection**: Required for video detection and download
+- **Account**: PornHub account login required for premium content
+
+## 🛠 Installation
+
+### For End Users
+1. Purchase a license key from [serp.ly/pornhub-video-downloader](https://serp.ly/pornhub-video-downloader)
+2. Download the extension package
+3. Open Chrome and navigate to `chrome://extensions/`
+4. Enable "Developer mode" in the top right corner
+5. Click "Load unpacked" and select the extension folder
+6. Click the extension icon and enter your email and license key to activate
+
+### For Developers
+```bash
+# Clone the repository
+git clone [repository-url]
+cd pornhub
+
+# Install dependencies
+npm install
+
+# Build the extension (optional - if build script exists)
+npm run build
+
+# Load in Chrome as unpacked extension
+```
+
+## 📖 Usage
+
+### Basic Download Process
+1. **Navigate** to any PornHub, PornHubPremium, or Thumbzilla video page
+2. **Activate** the extension using your license key (one-time setup)
+3. **Download Options**:
+   - Click the download button integrated into the video player, OR
+   - Click the extension icon in the browser toolbar, OR
+   - Right-click on the page and select "Download PornHub Video"
+4. **Select Quality** from the available options
+5. **Monitor Progress** via the in-page download manager
+6. **Access Files** in your default download folder under `PornHub/`
+
+### Supported URL Patterns
+- `https://www.pornhub.com/view_video.php?viewkey=[video-id]`
+- `https://www.pornhubpremium.com/view_video.php?viewkey=[video-id]`
+- `https://www.thumbzilla.com/video/ph[video-id]/[title]`
+- All PornHub network sites with viewkey parameter
+
+## 🏗 Technical Architecture
+
+### Core Components
+
+#### Background Service Worker (`background-enhanced.js`)
+- Orchestrates download operations and API calls
+- Manages offscreen document lifecycle
+- Handles context menu integration
+- Forwards progress events to content scripts
+- Implements license validation logic
+
+#### Content Scripts (`content.js`, `player-button.js`)
+- Extracts video metadata from page context
+- Injects download UI elements into the page
+- Manages real-time progress display
+- Handles user interactions and download initiation
+
+#### Offscreen Document (`offscreen.js`, `offscreen.html`)
+- Processes HLS segments and MP4 streams
+- Ensures downloads continue across page navigation
+- Implements progress tracking and cancellation
+- Handles Chrome downloads API integration
+
+#### Authentication System (`auth.js`)
+- Manages license key validation
+- Stores activation status securely
+- Integrates with Gumroad verification API
+- Handles user authentication flow
+
+### Download Pipeline
+
+1. **Detection Phase**: Content script identifies video data via flashvars extraction
+2. **Format Resolution**: Background worker processes media definitions and formats
+3. **Download Initiation**: Offscreen document handles actual file transfer
+4. **Progress Tracking**: Real-time updates via message passing between components
+5. **Completion**: Chrome downloads API manages final file saving
+
+## 🔧 Configuration
+
+### Manifest Permissions
+- `downloads`: File download management
+- `storage`: License and settings storage
+- `notifications`: User feedback
+- `contextMenus`: Right-click integration
+- `offscreen`: Refresh-proof downloads
+- `activeTab` & `tabs`: Page interaction
+- Host permissions for PornHub domains and CDN
+
+### Storage Structure
+```javascript
+{
+  isActivated: boolean,
+  licenseKey: string,
+  email: string,
+  activatedAt: timestamp
+}
+```
+
+## 🚫 Limitations
+
+- **Single Video Downloads**: No batch or playlist support
+- **Chrome Only**: Requires Manifest V3 compatible browser
+- **License Required**: Activation gate prevents unauthorized use
+- **Network Dependent**: Requires internet connection for all operations
+- **No Live Streams**: On-demand video content only
+- **PornHub Network Only**: Limited to supported domains
+- **No Subtitle Support**: Video tracks only, no subtitle extraction
+
+## 🔒 Security & Privacy
+
+- **License Verification**: Secure API-based activation system
+- **Local Storage**: Minimal data stored locally (activation status only)
+- **No Data Collection**: Extension doesn't collect or transmit user data
+- **Domain Restricted**: Permissions limited to necessary domains only
+- **Secure Communication**: All API calls use HTTPS
+
+## 🐛 Troubleshooting
+
+### Common Issues
+1. **"Extension not activated"**: Verify license key and internet connection
+2. **"No video detected"**: Ensure you're on a supported video page with viewkey parameter
+3. **Download interrupted**: Check if page was refreshed - downloads should auto-resume
+4. **Quality options missing**: Some videos may have limited format availability
+5. **Premium content issues**: Ensure you're logged into your PornHub account
+
+### Debug Information
+- Check browser console for detailed error messages
+- Verify extension permissions are granted
+- Ensure latest Chrome version compatibility
+- Test with different video pages to isolate issues
+
+## 📄 License
+
+This extension requires a valid license key for operation. Purchase from [serp.ly/pornhub-video-downloader](https://serp.ly/pornhub-video-downloader).
+
+## ⚖️ Legal Notice
+
+This tool is provided for educational and research purposes. Users are responsible for compliance with applicable laws and terms of service. Please respect content creators and copyright laws.
+
+## 🔄 Version History
+
+### v1.0.0 (Current)
+- Initial release with full feature set
+- License activation system
+- Refresh-proof download architecture
+- Multi-format support (MP4/HLS)
+- Real-time progress tracking
+- Context menu integration
+- Advanced error handling
+
 ---
+
+**Note**: This extension is designed for legitimate use cases and requires user authentication. Please use responsibly and in accordance with applicable laws and platform terms of service.
 
 *This extension is developed by the SERP Apps team and is not affiliated with or endorsed by PornHub.*
