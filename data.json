@@ -1,0 +1,160 @@
+{
+  "app": {
+    "name": "PornHub Video Downloader",
+    "version": "1.0.0",
+    "description": "Professional Chrome extension for downloading videos from PornHub, PornHubPremium, and Thumbzilla with advanced features",
+    "type": "Chrome Extension (Manifest V3)",
+    "category": "Video Downloader",
+    "platforms": ["PornHub", "PornHubPremium", "Thumbzilla"],
+    "license": "Commercial (License Key Required)",
+    "purchase_url": "https://serp.ly/pornhub-video-downloader"
+  },
+  "features": {
+    "core": [
+      "Multi-platform video downloads",
+      "Multiple quality options (480p, 720p, 1080p, 4K)",
+      "MP4 and HLS/M3U8 format support",
+      "Refresh-proof download architecture",
+      "Real-time progress tracking",
+      "License activation system"
+    ],
+    "technical": [
+      "Offscreen document processing",
+      "Flashvars extraction",
+      "Media definition API integration",
+      "HLS segment processing",
+      "Context menu integration",
+      "Chrome downloads API",
+      "Smart filename sanitization",
+      "Organized file storage"
+    ],
+    "ui_ux": [
+      "In-page download button",
+      "Browser popup interface",
+      "Download manager with progress",
+      "Right-click context menu",
+      "License activation flow",
+      "Error handling and notifications"
+    ]
+  },
+  "technical_specs": {
+    "manifest_version": 3,
+    "permissions": [
+      "downloads",
+      "storage", 
+      "notifications",
+      "contextMenus",
+      "offscreen",
+      "activeTab",
+      "tabs",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://www.pornhub.com/*",
+      "https://*.pornhub.com/*",
+      "https://www.pornhubpremium.com/*",
+      "https://*.pornhubpremium.com/*",
+      "https://www.thumbzilla.com/*",
+      "https://*.thumbzilla.com/*",
+      "https://*.phncdn.com/*"
+    ],
+    "architecture": {
+      "background": "Service Worker (background-enhanced.js)",
+      "content_scripts": ["content.js", "player-button.js", "download-manager.js"],
+      "offscreen": "offscreen.html + offscreen.js",
+      "popup": "popup.html + popup.js",
+      "authentication": "auth.js"
+    },
+    "dependencies": {
+      "archiver": "^7.0.1",
+      "sharp": "^0.34.3"
+    }
+  },
+  "supported_formats": {
+    "video": ["MP4", "HLS/M3U8"],
+    "qualities": ["480p", "720p", "1080p", "4K"],
+    "extraction_methods": [
+      "Flashvars parsing",
+      "Media definition API",
+      "HLS segment processing"
+    ]
+  },
+  "requirements": {
+    "browser": "Chrome/Chromium (Manifest V3 compatible)",
+    "license": "Valid license key from Gumroad",
+    "network": "Internet connection required",
+    "account": "PornHub login for premium content",
+    "storage": "Local storage for downloads and settings"
+  },
+  "limitations": [
+    "Single video downloads only (no batch/playlist)",
+    "Chrome browser only",
+    "License activation required",
+    "PornHub network sites only", 
+    "No live stream support",
+    "No subtitle extraction",
+    "Requires viewkey parameter in URL"
+  ],
+  "security": {
+    "license_verification": "Gumroad API integration",
+    "data_storage": "Local only (activation status)",
+    "permissions_scope": "Minimal required permissions",
+    "secure_communication": "HTTPS API calls only",
+    "privacy": "No user data collection or transmission"
+  },
+  "installation": {
+    "method": "Chrome Web Store / Unpacked Extension",
+    "activation": "Email + License Key",
+    "setup_steps": [
+      "Install extension",
+      "Purchase license key",
+      "Enter email and key in popup",
+      "Navigate to supported video page",
+      "Use download features"
+    ]
+  },
+  "usage_workflow": [
+    "Navigate to PornHub/Premium/Thumbzilla video page",
+    "Activate extension (one-time)",
+    "Click download button or use popup/context menu",
+    "Select video quality",
+    "Monitor download progress",
+    "Access downloaded file in PornHub/ folder"
+  ],
+  "build_info": {
+    "build_script": "build.js",
+    "package_output": "pornhub-downloader.zip",
+    "icon_generation": "generate-icons.js", 
+    "release_folder": "release/",
+    "css_files": ["popup-enhanced.css", "download-manager.css", "player-button.css"]
+  },
+  "development": {
+    "structure": "Modular component architecture",
+    "logging": "Comprehensive logging system (logger.js)",
+    "config": "Site-specific configuration (site-config.js)",
+    "injection": "Page context bridge (inject.js)",
+    "testing": "Manual testing workflow",
+    "deployment": "Automated build and packaging"
+  },
+  "documentation": {
+    "readme": "README.md",
+    "technical_docs": [
+      "docs/features-table.mdx",
+      "docs/mp4-offscreen-architecture.md", 
+      "docs/permissions-justification.md"
+    ],
+    "component_docs": [
+      "docs/background-enhanced-js.mdx",
+      "docs/content-js.mdx",
+      "docs/download-manager-js.mdx",
+      "docs/popup-js.mdx"
+    ]
+  },
+  "metadata": {
+    "created": "2024",
+    "last_updated": "2024-09-10",
+    "status": "Production Ready",
+    "complexity": "Advanced",
+    "maintenance": "Active Development"
+  }
+}
