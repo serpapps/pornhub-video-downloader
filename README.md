@@ -57,31 +57,6 @@ A browser extension that adds a download button to PornHub (`pornhub.com`) video
 
 ---
 
-## Screenshots
-
-![Download Button](https://raw.githubusercontent.com/serpapps/pornhub-video-downloader/refs/heads/assets/images/download-button.png)
-
-*Clean, intuitive download button that appears on video pages*
-
-![Extension Popup](https://raw.githubusercontent.com/serpapps/pornhub-video-downloader/refs/heads/assets/images/extension-popup.png)
-
-*Simple extension popup with video detection and download options*
-
-## Videos
-
-<a href="https://www.youtube.com/watch?v=example1" target="_blank">
-  <img src="https://raw.githubusercontent.com/serpapps/pornhub-video-downloader/refs/heads/assets/images/installation-tutorial.jpg" width="700px" />
-</a>
-
-*Installation and setup tutorial*
-
-<br><br>
-
-<a href="https://www.youtube.com/watch?v=example2" target="_blank">
-<img src="https://raw.githubusercontent.com/serpapps/pornhub-video-downloader/refs/heads/assets/images/usage-demo.jpg" width="700px">
-</a>
-
-*Usage demonstration and features overview*
 
 ## Installation Instructions
 
