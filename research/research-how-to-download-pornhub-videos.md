@@ -40,7 +40,7 @@ This research document provides a comprehensive technical analysis of PornHub's 
 
 ### Platform Structure
 
-PornHub operates as part of the MindGeek network (now Aylo), one of the world's largest adult content delivery networks. The platform architecture is designed for:
+PornHub operates as part of the MindGeek network (rebranded to Aylo in 2023), one of the world's largest adult content delivery networks. The platform architecture is designed for:
 
 1. **High-Volume Streaming**: Billions of video views per month requiring robust CDN infrastructure
 2. **Adaptive Bitrate Streaming**: Dynamic quality adjustment based on network conditions
@@ -68,11 +68,6 @@ PornHub uses consistent URL patterns across its network:
 ```
 https://www.pornhub.com/view_video.php?viewkey={VIDEO_ID}
 https://www.pornhubpremium.com/view_video.php?viewkey={VIDEO_ID}
-```
-
-**Example:**
-```
-https://www.pornhub.com/view_video.php?viewkey=ph5e8c5e5e5e5e5
 ```
 
 **Key Components:**
@@ -152,7 +147,7 @@ https://cv.phncdn.com/videos/HASH/QUALITY/FILE.mp4
 
 **Example:**
 ```
-https://cv.phncdn.com/videos/202401/15/123456789/1080P_4000K_123456789.mp4
+https://cv.phncdn.com/videos/YYYY/MM/DD/VIDEO_HASH/1080P_4000K_VIDEO_HASH.mp4
 ```
 
 **Quality Indicators in URLs:**
@@ -294,12 +289,10 @@ function extractFlashvars() {
       try {
         return JSON.parse(match[1]);
       } catch (e) {
-        // Try eval as fallback (less safe)
-        try {
-          return eval('(' + match[1] + ')');
-        } catch (e2) {
-          console.error('Failed to parse flashvars');
-        }
+        // Note: eval() is not recommended due to security risks
+        // Implement a safer alternative or proper JSON sanitization
+        console.error('Failed to parse flashvars - JSON parsing failed');
+        return null;
       }
     }
   }
@@ -671,7 +664,7 @@ yt-dlp is a powerful command-line video downloader with native PornHub support. 
 
 **Simple Download:**
 ```bash
-yt-dlp "https://www.pornhub.com/view_video.php?viewkey=VIDEOKEY"
+yt-dlp "https://www.pornhub.com/view_video.php?viewkey=ph5e8c5e5e5e5e5"
 ```
 
 **Download Best Quality:**
@@ -1271,13 +1264,14 @@ CDN URLs often include time-based tokens that expire after 1-4 hours.
 
 **Implementation:**
 ```javascript
-async function downloadWithExpiry(url, maxRetries = 3) {
+async function downloadWithExpiry(url, videoId, maxRetries = 3) {
   for (let i = 0; i < maxRetries; i++) {
     try {
       const response = await fetch(url);
       if (response.status === 403 || response.status === 410) {
         // URL expired, re-extract
-        url = await extractFreshUrl();
+        // Note: extractFreshUrl() needs to be implemented to re-fetch video metadata
+        url = await extractFreshUrl(videoId);
         continue;
       }
       return response;
@@ -1285,6 +1279,13 @@ async function downloadWithExpiry(url, maxRetries = 3) {
       if (i === maxRetries - 1) throw e;
     }
   }
+}
+
+// Helper function to re-extract video URL when expired
+async function extractFreshUrl(videoId) {
+  // Re-fetch video page or API to get fresh URL
+  const metadata = await fetchMediaDefinitions(videoId);
+  return metadata[0]?.videoUrl;
 }
 ```
 
@@ -1577,13 +1578,21 @@ async function selectOptimalQuality(availableQualities, bandwidthMbps) {
 }
 
 async function estimateBandwidth() {
-  const testUrl = 'https://cdn.example.com/test.dat';
+  // Note: Replace with actual test endpoint or implement custom bandwidth testing
+  // This is a placeholder example - use a real test file from the CDN
+  const testUrl = 'https://cv.phncdn.com/test.dat'; // Example - use actual test endpoint
   const startTime = Date.now();
-  const response = await fetch(testUrl);
-  const blob = await response.blob();
-  const duration = (Date.now() - startTime) / 1000;
-  const sizeMB = blob.size / 1024 / 1024;
-  return sizeMB / duration * 8; // Mbps
+  try {
+    const response = await fetch(testUrl);
+    const blob = await response.blob();
+    const duration = (Date.now() - startTime) / 1000;
+    const sizeMB = blob.size / 1024 / 1024;
+    return sizeMB / duration * 8; // Mbps
+  } catch (e) {
+    // Fallback to default quality if bandwidth test fails
+    console.warn('Bandwidth estimation failed, using default quality');
+    return 5; // Default to medium bandwidth
+  }
 }
 ```
 
@@ -1760,7 +1769,7 @@ This research has comprehensively analyzed PornHub's video delivery infrastructu
 ---
 
 **Document Version:** 1.0  
-**Last Updated:** December 2025  
+**Last Updated:** December 2024  
 **Authors:** SERP Apps Research Team  
 **License:** Internal Use - Educational and Research Purposes
 
