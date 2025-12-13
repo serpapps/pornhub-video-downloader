@@ -1,4 +1,4 @@
-# PornHub Video Video Downloader App (Browser Extension for Chrome, Firefox, Edge, Brave, Arc, Safari)
+# PornHub Video Downloader App (Browser Extension for Chrome, Firefox, Edge, Brave, Arc, Safari)
 
 A browser extension that adds a download button to PornHub (`pornhub.com`) video pages to easily download videos for convenient offline viewing.
 
