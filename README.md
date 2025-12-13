@@ -350,3 +350,18 @@ This tool is provided for educational and research purposes. Users are responsib
 **Note**: This extension is designed for legitimate use cases and requires user authentication. Please use responsibly and in accordance with applicable laws and platform terms of service.
 
 *This extension is developed by the SERP Apps team and is not affiliated with or endorsed by PornHub.*
+
+
+
+---
+
+<details>
+
+<summary>
+  Research
+</summary>
+
+
+
+</details>
+
