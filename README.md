@@ -15,12 +15,6 @@ A browser extension that adds a download button to PornHub (`pornhub.com`) video
 - 🐛 Report bugs [here](https://github.com/serpapps/pornhub-video-downloader/issues)
 - 🆕 Request features [here](https://github.com/serpapps/pornhub-video-downloader/issues)
 
-## Resources
-
-- [Repository]()
-- [Gist]()
-- [How to download pornhub videos]()
-
 ## Table of Contents
 - [Features](#features)
 - [Screenshots](#screenshots)
@@ -349,6 +343,13 @@ This tool is provided for educational and research purposes. Users are responsib
 
 *This extension is developed by the SERP Apps team and is not affiliated with or endorsed by PornHub.*
 
+
+
+## Related
+
+- [Repository](https://github.com/serpapps/pornhub-video-downloader)
+- [Gist](https://gist.github.com/devinschumacher/ff15b3219b4042375d6aa25dde81fd88)
+- [How to download pornhub videos]()
 
 
 ---
