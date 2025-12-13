@@ -1,4 +1,4 @@
-# PornHub Video Downloader
+# PornHub Video Video Downloader App (Browser Extension for Chrome, Firefox, Edge, Brave, Arc, Safari)
 
 A browser extension that adds a download button to PornHub (`pornhub.com`) video pages to easily download videos for convenient offline viewing.
 
@@ -7,7 +7,6 @@ A browser extension that adds a download button to PornHub (`pornhub.com`) video
 - Create a personal library of adult entertainment that you own forever
 - Never lose access to premium content again - backup everything locally
 
-![pornhub-video-downloader](https://raw.githubusercontent.com/serpapps/pornhub-video-downloader/refs/heads/assets/images/pornhub-video-downloader.gif)
 
 ## 🔗 Links
 
@@ -16,12 +15,11 @@ A browser extension that adds a download button to PornHub (`pornhub.com`) video
 - 🐛 Report bugs [here](https://github.com/serpapps/pornhub-video-downloader/issues)
 - 🆕 Request features [here](https://github.com/serpapps/pornhub-video-downloader/issues)
 
-### Resources
+## Resources
 
-- 💬 [Community](https://serp.ly/@serp/community)
-- 💌 [Newsletter](https://serp.ly/@serp/email)
-- 🛒 [Shop](https://serp.ly/@serp/store)
-- 🎓 [Courses](https://serp.ly/@serp/courses)
+- [Repository]()
+- [Gist]()
+- [How to download pornhub videos]()
 
 ## Table of Contents
 - [Features](#features)
