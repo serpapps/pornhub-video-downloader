@@ -1,4 +1,4 @@
-# Pornhub Downloader (Browser Extension)
+# Pornhub Video Downloader (Browser Extension) | How to Download Pornhub Videos
 
 > Download supported Pornhub videos as MP4 files directly from active video pages.
 
